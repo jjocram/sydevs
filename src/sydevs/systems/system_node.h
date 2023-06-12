@@ -109,6 +109,7 @@ protected:
      *         the precision level may be changed to match `time_precision()`.
      */
     duration scale_planned_dt(duration planned_dt) const;
+    std::string get_simulated_time();
 
 private:
     virtual void adopt_component_print_flags(const system_node& node) const = 0;
@@ -308,6 +309,13 @@ inline system_node::error::error(const char* what_arg)
 {
 }
 
+inline std::string system_node::get_simulated_time() {
+    std::stringstream stream;
+    auto tp = external_interface_.external_context().event_time().t();
+    stream << tp.epoch_phase(unit);
+
+    return stream.str();
+}
 
 }  // namespace
 }  // namespace
