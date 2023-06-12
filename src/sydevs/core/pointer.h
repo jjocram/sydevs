@@ -3,6 +3,7 @@
 #define SYDEVS_POINTER_H_
 
 #include <memory>
+#include <stdexcept>
 
 namespace sydevs {
 
